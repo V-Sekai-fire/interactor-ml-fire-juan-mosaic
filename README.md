@@ -1,44 +1,21 @@
-# FNS Mosaic
+# interactor-ml-fire-juan-mosaic
 
-> FNS Mosaic is a style transfer model. In this sample application, we use the ONNX Runtime C API to process an image using the FNS Mosaic model in ONNX format.
+A command-line sample that restyles a PNG with a mosaic style-transfer network in ONNX format, on the GPU or the CPU.
 
-## How to run
+## What it is for
 
-`run.bat`
+It reads an image, runs the bundled style-transfer model on it through an ONNX runtime's C API, and writes the restyled image. The runtime libraries and headers are checked in prebuilt, so it runs only on the desktop platform they were built for.
 
-## References
+## Build and run
 
-https://github.com/microsoft/onnxruntime-inference-examples/blob/main/c_cxx/README.md
-
-https://onnxruntimetestdata.blob.core.windows.net/models/libpng.zip
-
-![Juan Mosaic](https://github.com/fire/onnx-godot-juan-mosaic/blob/main/DLvBok4XUAAnvyf_mosaic.png)
-## Support matrix
-
- > The DirectML execution provider currently supports ONNX opset 12 (ONNX v1.7). Evaluating models which require a higher opset version is not supported, and may produce unexpected results.
-    
-### Use Windows ONNX Runtime with CPU or Directml.
-
->     CPU
->     NVIDIA Kepler (GTX 600 series) and above
->     AMD GCN 1st Gen (Radeon HD 7000 series) and above
->     Intel Haswell (4th-gen core) HD Integrated Graphics and above
->
-> DirectML is compatible with Windows 10, version 1709 (10.0.16299; RS3, “Fall Creators Update”) and newer.
-    
-https://onnxruntime.ai/docs/execution-providers/DirectML-ExecutionProvider#install
-
-### Build Onnx Runtime instructions
-
-```
-./build.bat --config RelWithDebInfo --build_shared_lib --parallel --use_dml --disable_rtti --disable_exceptions --enable_msvc_static_runtime
+```sh
+cmake -B build
+cmake --build build
+mosiac.bat
 ```
 
-### Build Mosaic instructions
+`mosiac.bat` runs the executable on the sample image.
 
-```
-mkdir build
-cd build
-cmake ..
-REM Open visual studio project and build release debug.
-```
+## Licence
+
+MIT; see `LICENSE`. The sample source keeps its upstream MIT notice.
